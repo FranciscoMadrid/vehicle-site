@@ -1,0 +1,47 @@
+---
+import "../style/global.css"
+import SidepanelCnt from "./components/functional components/SidepanelCnt"
+import Header from "@/layout/components/partial/Header"
+import siteConfig from "../config/site.json"
+
+export interface Props {
+  title?: string,
+  meta_title?:string,
+  favicon?: string,
+	className?: string,
+	style?: string
+}
+
+const {
+  title = siteConfig.site.title, 
+  favicon = siteConfig.site.favicon_image, 
+	className,
+	style,
+  meta_title} = Astro.props
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon} />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body 
+		style={style}
+		class={`bg-background min-h-screen flex flex-col ${className}`}>
+
+		<main class="grow grid grid-cols-[auto_1fr] h-full">
+      <!-- Sidemenu -->
+      <SidepanelCnt client:load/>
+
+      </div>
+      <!-- Main content -->
+      <div class="h-full w-full flex flex-col">
+        <Header client:load title="Flow Drive"/>
+        <slot/>
+      </div>
+    </main>
+	</body>
+</html>

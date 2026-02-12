@@ -1,0 +1,19 @@
+{
+  "sidepanel": [
+    {
+      "name": "Dashboard",
+      "tab": "dashboard",
+      "icon": "MdDashboard"
+    },
+    {
+      "name": "Vehicles",
+      "tab": "vehicles",
+      "icon": "FaCar"
+    },
+    {
+      "name": "Logs",
+      "tab": "logs",
+      "icon": "BiSolidNotepad"
+    }
+  ]
+}

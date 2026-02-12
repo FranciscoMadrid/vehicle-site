@@ -1,0 +1,9 @@
+{
+  "site": {
+    "title": "Flowdrive",
+    "description": "",
+    "favicon_image": "/favicon/Driveflow-logo.ico",
+    "logo-dark": "/images/Logo - Dark.png",
+    "logo-light": "/images/Logo - Light.png"
+  }
+}
