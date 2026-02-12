@@ -2,28 +2,30 @@ import React, { useState } from 'react'
 import SiteConfig from "@/config/site.json"
 import { FaBars } from "react-icons/fa";
 import NavTabs from "@/config/nav-tab.json"
-import DynamicIcon from '../helper/DynamicIcon';
+import Link from '../../Link';
 
-export interface SidepanelCntProps {
+export interface NavbarDesktopProps {
   logo?: string,
+  className?: string,
+  pathname: string
 }
-export default function SidepanelCnt({logo = SiteConfig.site['logo-light']}: SidepanelCntProps) {
+export default function NavbarDesktop({logo = SiteConfig.site['logo-light'], className, pathname}: NavbarDesktopProps) {
   const [visible, setVisible] = useState(false);
-  
+
   const handleToggle = () => {
     setVisible(!visible)
-    console.log('test')
   }
 
   const handleClose = () => {
     setVisible(false);
   }
+
   const sidePanelStyle = `bg-primary flex flex-col gap-5 transition-all duration-300 ease-in-out overflow-hidden h-screen ${visible ? 'w-64' : 'w-20'}`
   const childStyle = `transition-opacity whitespace-nowrap duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`
 
   return (
-    <section 
-      className={sidePanelStyle}>
+    <nav 
+      className={`${className} ${sidePanelStyle}`}>
       {/* Logo & Button toggle */}
       <div className='flex flex-row gap-2 items-center p-2 px-4 justify-between'>
         <FaBars
@@ -33,6 +35,7 @@ export default function SidepanelCnt({logo = SiteConfig.site['logo-light']}: Sid
           <img 
             className='w-auto h-10' 
             src={logo}
+            alt={'logo.png'}
             loading='eager'
           />
         </div>
@@ -42,18 +45,16 @@ export default function SidepanelCnt({logo = SiteConfig.site['logo-light']}: Sid
         <ul className='w-full flex flex-col gap-2 items-start'>
           {NavTabs.sidepanel.map((nav) => (
             <li className='w-full text-2xl relative font-light text-white' key={nav.tab}>
-              <a 
-                href='/'
-                className='flex flex-row transition-transform duration-100 ease-in items-center gap-2 p-3 px-5hover:scale-105 hover:bg-primary-dark'>
-                <DynamicIcon icon={nav.icon}/>
-                <span>
-                  {nav.name}
-                </span>
-              </a>
+              <Link 
+                className={`transition duration-100 ease-in-out p-3 px-5 hover:scale-105 hover:bg-primary-dark 
+                  ${pathname === nav.href ? "bg-primary-dark": ""}`}
+                title={nav.name}
+                href={nav.href}
+                icon={nav.icon}/>
             </li>
           ))}
         </ul>
       </div>
-    </section>
+    </nav>
   )
 }

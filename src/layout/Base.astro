@@ -1,6 +1,6 @@
 ---
 import "../style/global.css"
-import SidepanelCnt from "./components/functional components/SidepanelCnt"
+import NavbarContainer from "@/layout/components/functional components/Navbar/NavbarContainer"
 import Header from "@/layout/components/partial/Header"
 import siteConfig from "../config/site.json"
 
@@ -32,16 +32,17 @@ const {
 		style={style}
 		class={`bg-background min-h-screen flex flex-col ${className}`}>
 
-		<main class="grow grid grid-cols-[auto_1fr] h-full">
-      <!-- Sidemenu -->
-      <SidepanelCnt client:load/>
-
-      </div>
-      <!-- Main content -->
-      <div class="h-full w-full flex flex-col">
-        <Header client:load title="Flow Drive"/>
-        <slot/>
-      </div>
+		<main class="grow">
+			<div class="flex flex-row md:grid md:grid-cols-[auto_1fr]">
+				<!-- Sidemenu -->
+				<NavbarContainer client:load className="md:order-1 order-2"/>
+				<!-- Main content -->
+				<div class="h-full w-full flex flex-col md:order-2 order-1">
+					<Header client:load title="Flow Drive"/>
+					<slot/>
+				</div>
+				</div>
+			</div>
     </main>
 	</body>
 </html>

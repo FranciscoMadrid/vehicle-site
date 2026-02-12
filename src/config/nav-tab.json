@@ -3,17 +3,20 @@
     {
       "name": "Dashboard",
       "tab": "dashboard",
-      "icon": "MdDashboard"
+      "icon": "MdDashboard",
+      "href": "/"
     },
     {
       "name": "Vehicles",
       "tab": "vehicles",
-      "icon": "FaCar"
+      "icon": "FaCar",
+      "href": "/vehicles"
     },
     {
       "name": "Logs",
       "tab": "logs",
-      "icon": "BiSolidNotepad"
+      "icon": "BiSolidNotepad",
+      "href": "/logs"
     }
   ]
 }
