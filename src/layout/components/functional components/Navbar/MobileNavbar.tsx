@@ -9,7 +9,7 @@ export interface MobileNavbarProps{
   pathname?: string
 }
 export default function MobileNavbar({className, pathname}:MobileNavbarProps) {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
   
   const handleToggle = () => {
     setVisible(!visible)
@@ -20,7 +20,7 @@ export default function MobileNavbar({className, pathname}:MobileNavbarProps) {
   }
 
   return (
-    <nav className={`${className} flex items-center bg-primary p-4`}>
+    <nav className={`${className} flex items-center h-full bg-primary p-4`}>
       <DynamicIcon 
         onClick={handleToggle}
         icon='FaBars' 
