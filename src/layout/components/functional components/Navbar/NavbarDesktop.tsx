@@ -21,7 +21,7 @@ export default function NavbarDesktop({logo = SiteConfig.site['logo-light'], cla
     setVisible(false);
   }
 
-  const sidePanelStyle = `bg-primary flex flex-col gap-5 transition-all duration-300 ease-in-out overflow-hidden h-screen ${visible ? 'w-64' : 'w-20'}`
+  const sidePanelStyle = `bg-primary flex flex-col gap-5 transition-all duration-300 ease-in-out overflow-hidden ${visible ? 'w-64' : 'w-20'}`
   const childStyle = `transition-opacity whitespace-nowrap duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`
 
   return (

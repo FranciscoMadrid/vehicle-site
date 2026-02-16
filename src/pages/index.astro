@@ -1,7 +1,11 @@
 ---
+import Dashboard from "@/layout/components/functional components/dashboard/Dashboard";
 import Base from "../layout/Base.astro";
-
+import {VEHICLES_DUMMY, LOGS_DUMMY} from '@/config/dummy-data'
 ---
 <Base>
-  
+  <Dashboard
+    VehicleData={VEHICLES_DUMMY}
+    LogData={LOGS_DUMMY}
+    client:only="react"/>
 </Base>

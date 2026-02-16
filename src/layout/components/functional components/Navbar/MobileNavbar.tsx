@@ -20,13 +20,13 @@ export default function MobileNavbar({className, pathname}:MobileNavbarProps) {
   }
 
   return (
-    <nav className={`${className} flex items-center h-full bg-primary p-4`}>
+    <nav className={`${className} flex h-full items-center bg-primary p-4`}>
       <DynamicIcon 
         onClick={handleToggle}
         icon='FaBars' 
         className='text-white h-10 w-10'/>
       {/* Sliding Panel */}
-      <div className={`fixed inset-0 bg-black/30 transition-opacity duration-200 ease-in-out
+      <div className={`fixed inset-0 z-200 bg-black/30 transition-opacity duration-200 ease-in-out
         ${visible ? 'translate-x-0' : 'translate-x-full'}`}
         onClick={handleClose}>
         <div 
