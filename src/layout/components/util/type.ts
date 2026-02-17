@@ -16,11 +16,12 @@ export interface Model {
 
 export interface Log {
   id?: number;
+  date: string,
   fk_vehicle_id: number,
   type: 'ENTRY' | 'EXIT',
   driver_name: string,
-  mileage: string,
-  createdAt?: string;
+  mileage: number,
+  created_at?: string;
 }
 
 export interface Brand {

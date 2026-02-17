@@ -1,0 +1,11 @@
+---
+import LogContainer from "@/layout/components/functional components/log/LogContainer";
+import Base from "../layout/Base.astro";
+---
+<Base>
+  <section class="p-5">
+    <div class="flex flex-col border-2 rounded-md overflow-hidden bg-light border-black/30 max-w-7xl mx-auto">
+      <LogContainer client:only="react"/>
+    </div>
+  </section>
+</Base>
