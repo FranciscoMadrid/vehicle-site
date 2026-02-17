@@ -1,13 +1,20 @@
 Flow Drive 🚗
-A modern vehicle management dashboard. This project is a split-stack application using a static frontend and a separate VPS-hosted API.
+Technical Assessment Project for PPF. A comprehensive fleet management system designed to register vehicles and track every entry and exit, ensuring data integrity and providing advanced filtering capabilities.
 
-🏗 Architecture
-Frontend: Astro (Static Mode) + React
+📋 Assessment Overview
+This project was developed to satisfy the requirements of the PPF Web Developer technical test, which included:
 
-UI Components: PrimeReact + Tailwind CSS v4
+Full CRUD functionality for vehicle management.
+A robust Log System for vehicle entries and exits.
+Advanced Data Filtering (Date, Driver, and Vehicle).
+Integration of a React.js frontend with a Node.js/Express API
 
-Backend: Express.js (Node.js) on a Linux VPS
-
+🏗 Architecture & Tech Stack
+Frontend: Astro + React.js
+UI Framework: PrimeReact (for high-quality, modern components)
+Styling: Tailwind CSS v4
+Backend: Node.js + Express.js
+Database: Relational Database (Normalized schema for Vehicles and Logs)
 Deployment: Hostinger (Frontend) & Private VPS (API)
 
 🚀 Deployment Guide
