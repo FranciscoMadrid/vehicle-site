@@ -8,7 +8,7 @@ import FadeInWrapper from '../animations/FadeInWrapper';
 export interface NavbarDesktopProps {
   logo?: string,
   className?: string,
-  pathname: string
+  pathname: string,
 }
 export default function NavbarDesktop({logo = SiteConfig.site['logo-light'], className, pathname}: NavbarDesktopProps) {
   const [visible, setVisible] = useState(false);
@@ -32,14 +32,14 @@ export default function NavbarDesktop({logo = SiteConfig.site['logo-light'], cla
         <FaBars
           onClick={handleToggle}
           className='text-white w-fit select-none h-10 shrink-0 cursor-pointer'/>
-        <div className={childStyle}>
+        <a className={childStyle} href='/'>
           <img 
             className='w-auto h-10' 
             src={logo}
             alt={'logo.png'}
             loading='eager'
           />
-        </div>
+        </a>
       </div>
       {/* Link Navigation */}
       {visible && (

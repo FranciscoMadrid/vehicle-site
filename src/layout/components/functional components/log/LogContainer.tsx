@@ -5,6 +5,7 @@ import { LogService, type LogFilters } from '@/service/log';
 import LogDatatable from './LogDatatable';
 import DialogButton from '../../partial/DialogButton';
 import LogForm from './LogForm';
+import FadeInWrapper from '../animations/FadeInWrapper';
 
 export default function LogContainer() {
   const [selectedLog, setSelectedLog] = useState<Log[]>([]); 
@@ -56,62 +57,64 @@ export default function LogContainer() {
   }, []);
 
   return (
-    <section className='flex flex-col'>
-      <Toast ref={toast}/>
-      <div className='flex flex-row gap-5 p-2 justify-end items-center'>
-        <DialogButton
-          label='Add'
-          header='Add Record'
-          className='p-5 w-[90vw] md:w-[50vw]'
-        >
-          {(close) => (
-            <LogForm 
-              handleClose={close} 
-              fetchData={fetchLog}
-              mode='create' 
-              toast={showSuccessCreate}/>
-          )}
-        </DialogButton>
-        <DialogButton
-          label='Edit'
-          header='Edit Record'
-          severity='secondary'
-          disabled={selectedLog.length === 1 ? false : true}
-          className='p-5 w-[90vw] md:w-[50vw]'
-        >
-          {(close) => (
-            <LogForm 
-              toast={showSuccessUpdate}
-              handleClose={close} 
-              mode='update' 
-              fetchData={fetchLog}
-              selectedLog={selectedLog}/>
-          )}
-        </DialogButton>
-        <DialogButton
-          label='Delete'
-          header='Delete Record'
-          severity='danger'
-          disabled={selectedLog.length >= 1 ? false : true}
-          className='p-5 w-[90vw] md:w-[50vw]'
-        >
-          {(close) => (
-            <LogForm 
-              toast={showSuccessDelete}
-              handleClose={close} 
-              fetchData={fetchLog}
-              mode='delete' 
-              selectedLog={selectedLog}/>
-          )}
-        </DialogButton>
-      </div>
-      <LogDatatable
-        data={data}
-        fetchLogs={fetchLog}
-        loading={loading}
-        selectedLog={selectedLog}
-        setSelectedLog={setSelectedLog}
-      />
-    </section>
+    <FadeInWrapper direction='Up' className='bg-light'>
+      <section className='flex flex-col rounded-md'>
+        <Toast ref={toast}/>
+        <div className='flex flex-row gap-5 p-2 justify-end items-center'>
+          <DialogButton
+            label='Add'
+            header='Add Record'
+            className='w-[90vw] md:w-[50vw]'
+          >
+            {(close) => (
+              <LogForm 
+                handleClose={close} 
+                fetchData={fetchLog}
+                mode='create' 
+                toast={showSuccessCreate}/>
+            )}
+          </DialogButton>
+          <DialogButton
+            label='Edit'
+            header='Edit Record'
+            severity='secondary'
+            disabled={selectedLog.length === 1 ? false : true}
+            className='w-[90vw] md:w-[50vw]'
+          >
+            {(close) => (
+              <LogForm 
+                toast={showSuccessUpdate}
+                handleClose={close} 
+                mode='update' 
+                fetchData={fetchLog}
+                selectedLog={selectedLog}/>
+            )}
+          </DialogButton>
+          <DialogButton
+            label='Delete'
+            header='Delete Record'
+            severity='danger'
+            disabled={selectedLog.length >= 1 ? false : true}
+            className='w-[90vw] md:w-[50vw]'
+          >
+            {(close) => (
+              <LogForm 
+                toast={showSuccessDelete}
+                handleClose={close} 
+                fetchData={fetchLog}
+                mode='delete' 
+                selectedLog={selectedLog}/>
+            )}
+          </DialogButton>
+        </div>
+        <LogDatatable
+          data={data}
+          fetchLogs={fetchLog}
+          loading={loading}
+          selectedLog={selectedLog}
+          setSelectedLog={setSelectedLog}
+        />
+      </section>
+    </FadeInWrapper>
   )
 }

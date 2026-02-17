@@ -1,11 +1,11 @@
 ---
-import Dashboard from "@/layout/components/functional components/dashboard/Dashboard";
 import Base from "../layout/Base.astro";
-import {VEHICLES_DUMMY, LOGS_DUMMY} from '@/config/dummy-data'
+import DashboardContainer from '@/layout/components/functional components/dashboard/DashboardContainer' 
 ---
 <Base>
-  <Dashboard
-    VehicleData={VEHICLES_DUMMY}
-    LogData={LOGS_DUMMY}
-    client:only="react"/>
+  <section class="p-5 h-full w-full">
+    <div class="flex flex-col rounded-md overflow-hidden max-w-7xl mx-auto h-full w-full">
+      <DashboardContainer client:only="react"/>
+    </div>
+  </section>
 </Base>

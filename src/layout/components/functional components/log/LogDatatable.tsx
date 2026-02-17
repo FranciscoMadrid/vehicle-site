@@ -82,13 +82,15 @@ export default function LogDatatable({
           const endDate = range[1] ?? null;
           const params: Partial<LogFilters> = {
             ...apiParams,
-            startDate: startDate ? startDate.toISOString()[0] : undefined,
-            endDate: endDate ? endDate.toISOString()[0] : undefined,
+            startDate: startDate ? startDate.toISOString() : undefined,
+            endDate: endDate ? endDate.toISOString() : undefined,
           };
           setApiParams(params);
         }}
         selectionMode="range"
         readOnlyInput
+        showTime
+        hourFormat='24'
         placeholder="Select Date Range"
         dateFormat="yy-mm-dd"
       />
@@ -96,33 +98,33 @@ export default function LogDatatable({
   };
 
   const mileageFilterTemplate = (options: any) => {
+    const minRange = 0;
+    const maxRange = 200000;
     return (
       <div className="flex flex-col gap-2 px-2 w-full">
         <Slider
-          value={options.value || [0, 100000]}
+          value={options.value || [minRange, maxRange]}
           onChange={(e) => {
             options.filterCallback(e.value, options.index);
+          }}
+          onSlideEnd={(e) => {
             const range = e.value as number[];
             if (!range || range.length < 2) return;
             const [min, max] = range;
-
-            const params: Partial<LogFilters> = {
-              ...apiParams,
+            setApiParams(prev => ({
+              ...prev,
               minMileage: min.toString(),
               maxMileage: max.toString()
-            };
-
-            setApiParams(params);
+            }));
           }}
           range
-          min={0}
-          max={200000}
+          min={minRange}
+          max={maxRange}
           className="w-full"
         />
-
         <div className="flex justify-between text-sm">
-          <span>{options.value?.[0] ?? 0}</span>
-          <span>{options.value?.[1] ?? 200000}</span>
+          <span>{options.value?.[0] ?? minRange}</span>
+          <span>{options.value?.[1] ?? maxRange}</span>
         </div>
       </div>
     );
@@ -168,7 +170,7 @@ export default function LogDatatable({
       dataKey={'id'}
       stripedRows
       filters={filters}
-      filterDisplay='menu'
+      filterDisplay='row'
       onFilter={onFilter}
       paginator
       onSelectionChange={(e: DataTableSelectionMultipleChangeEvent<Log[]>) => {
@@ -243,6 +245,8 @@ export default function LogDatatable({
       filterField="dateRange"
       style={columnStyle}
       filter
+      showFilterOperator={false}
+      showAddButton={false}
       filterElement={dateFilterTemplate}
       showFilterMatchModes={false}
     />

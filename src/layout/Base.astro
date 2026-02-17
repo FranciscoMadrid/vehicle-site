@@ -1,6 +1,5 @@
 ---
 import "../style/global.css"
-import NavbarContainer from "@/layout/components/functional components/navbar/NavbarContainer"
 import Header from "@/layout/components/functional components/Header"
 import siteConfig from "../config/site.json"
 
@@ -43,10 +42,10 @@ const {
 		<main class="grow">
 			<div class="flex flex-row md:grid md:grid-cols-[auto_1fr] min-h-screen">
 				
-				<NavbarDesktop pathname={pathname} client:only="react" className="md:block hidden"/>
+				<NavbarDesktop pathname={pathname} client:load className="md:block hidden"/>
 				<div class="flex flex-col w-full min-w-0"> <header class="flex flex-row items-center justify-between w-full">
-						<Header client:only="react" title="Flow Drive"/>
-						<MobileNavbar pathname={pathname} client:only="react" className="block md:hidden"/>
+						<Header client:load  title="Flow Drive"/>
+						<MobileNavbar pathname={pathname} client:load className="block md:hidden"/>
 					</header>
 
 					<div class="flex-1"> 
