@@ -1,43 +1,32 @@
-# Astro Starter Kit: Minimal
+Flow Drive 🚗
+A modern vehicle management dashboard. This project is a split-stack application using a static frontend and a separate VPS-hosted API.
 
-```sh
-npm create astro@latest -- --template minimal
-```
+🏗 Architecture
+Frontend: Astro (Static Mode) + React
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+UI Components: PrimeReact + Tailwind CSS v4
 
-## 🚀 Project Structure
+Backend: Express.js (Node.js) on a Linux VPS
 
-Inside of your Astro project, you'll see the following folders and files:
+Deployment: Hostinger (Frontend) & Private VPS (API)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+🚀 Deployment Guide
+Frontend Deployment
+Environment Variables: Ensure your .env file points to your production API URL.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Build: Generate the static site locally:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Bash
+npm run build
+Upload: Transfer the contents of the dist/ folder to your web server (e.g., public_html).
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🔑 Configuration (Environment Variables)
 
-## 🧞 Commands
+The frontend requires an environment variable to connect to the backend API. Create a `.env` file in the root directory:
 
-All commands are run from the root of the project, from a terminal:
+```env
+# Example for local development:
+PUBLIC_API_BASE_URL=http://localhost:3000
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Example for production:
+# PUBLIC_API_BASE_URL=[https://your-api-domain.com](https://your-api-domain.com)
